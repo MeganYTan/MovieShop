@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MovieCardModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row">
+@{
+    foreach(MovieCardModel movie in Model)
+    {
+        
+            <partial name = "_MovieCard" model = "movie" />
+        
+    }
+}
+</div>

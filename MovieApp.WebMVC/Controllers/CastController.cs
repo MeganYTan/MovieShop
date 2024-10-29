@@ -64,5 +64,12 @@ namespace CastApp.WebMVC.Controllers
             _castService.DeleteCast(cast.Id);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var result = _castService.GetCastDetails(id);
+            return View(result);
+        }
     }
 }

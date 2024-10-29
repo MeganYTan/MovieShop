@@ -1,0 +1,12 @@
+﻿@model Cast
+<h1>@Model.Name</h1>
+
+    <ul class="list-group">
+    @foreach (var mc in Model.MovieCasts)
+    {
+        <li class="list-group-item">
+        <a asp-controller="Movie" asp-action="Details" asp-route-id="@mc.Movie.Id">@mc.Movie.Title</a>
+        </li>
+    }
+    </ul>
+

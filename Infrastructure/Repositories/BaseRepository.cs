@@ -34,7 +34,7 @@ namespace Infrastructure.Repositories
             return _context.Set<T>().ToList();
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
             return _context.Set<T>().Find(id);
         }

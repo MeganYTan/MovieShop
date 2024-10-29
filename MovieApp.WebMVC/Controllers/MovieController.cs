@@ -65,5 +65,21 @@ namespace MovieApp.WebMVC.Controllers
             _movieService.DeleteMovie(movie.Id);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var movie = _movieService.GetMovieById(id);
+            if (movie != null && movie.Reviews.Any())
+            {
+                ViewBag.AverageRating = movie.Reviews.Average(r => r.Rating);
+            }
+            else
+            {
+                ViewBag.AverageRating = 0;
+            }
+
+            return View(movie);
+        }
     }
 }

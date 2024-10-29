@@ -45,5 +45,9 @@ namespace Infrastructure.Services
             }
             return 0;
         }
+        public Cast GetCastDetails(int id)
+        {
+            return _repository.GetById(id);
+        }
     }
 }

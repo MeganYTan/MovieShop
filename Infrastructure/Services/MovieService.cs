@@ -45,5 +45,9 @@ namespace Infrastructure.Services
             }
             return 0;
         }
+        public Movie GetMovieDetails(int id)
+        {
+            return GetMovieById(id);
+        }
     }
 }

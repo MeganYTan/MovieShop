@@ -27,5 +27,23 @@ namespace Infrastructure.Repositories
         {
             return _context.Movies.OrderByDescending(x=>x.Revenue).Take(number).Include(x=>x.Genres).ToList(); ;
         }
+
+        IEnumerable<Movie> IMovieRepository.GetHighestGrossingMovies(int number)
+        {
+            return _context.Movies.OrderByDescending(x=>x.Revenue).Take(number).ToList();
+        }
+
+        public override Movie GetById(int id)
+        {
+            var movie = _context.Movies
+            .Include(m => m.MovieGenres) 
+                .ThenInclude(mg => mg.Genre) 
+            .Include(m => m.MovieCasts) 
+                .ThenInclude(mc => mc.Cast) 
+            .Include(m => m.Reviews) 
+            .FirstOrDefault(m => m.Id == id);
+
+            return movie;
+        }
     }
 }
